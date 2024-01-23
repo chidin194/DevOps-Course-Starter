@@ -9,10 +9,33 @@
 
   <div class="row">
     <div class="col-md-12">
-      <h2>Items</h2>
-      <ul class="list-group mb-4">
-        <!-- List the todo items here -->
+      <h2>Your To-Dos</h2>
+      <ul class="list-group mb-4" style="list-style: none;">
+        {% for to_do in to_dos -%}
+            <li>{{ to_do.status }}: {{ to_do.title }}</li>
+            <form action="/complete/{{to_do.id}}" method="post">
+              <div>
+                <input type="submit" value="Mark as complete" />
+              </div>
+            </form>
+            <form action="/delete/{{to_do.id}}" method="post">
+              <div>
+                <input type="submit" value="Delete" />
+              </div>
+            </form>
+        {% endfor %}
       </ul>
     </div>
   </div>
+
+  <form action="/" method="post">
+    <div>
+      <label for="new_to_do">New to-do: </label>
+      <input type="text" name="new_to_do" id="new_to_do" required />
+    </div>
+    <div>
+      <input type="submit" value="Add" />
+    </div>
+  </form>
+
 {% endblock %}
