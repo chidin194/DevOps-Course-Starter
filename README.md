@@ -57,3 +57,10 @@ Press CTRL+C to quit
  * Debugger PIN: 113-666-066
 ```
 Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser to view the app.
+
+## Obtaining and using Trello credentials
+
+Create a Trello account [here](https://trello.com/signup), and then create a dedicated Trello workspace and associated test board with the columns 'To Do', 'Doing' and 'Done'. Create a Power-Up for this workspace [on this page](https://trello.com/power-ups/admin). You will then be able to generate an API key and an API token, next to where your API key is displayed. You should store these in your .env file, under the same variable names as are in .env.template, as they will be needed to make requests to the Trello API.
+
+There are four further environment variables (TRELLO_BOARD_ID, TO_DO_LIST_ID, DOING_LIST_ID and DONE_LIST_ID) required by the app that you will need to obtain from the Trello API itself and add to the .env file. These will be different for each board, and information about how to obtain them can be found [here](https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/#your-first-api-call).
+
