@@ -3,18 +3,19 @@ import requests
 
 class TrelloApi:
 
-  base_url = os.getenv('TRELLO_API_BASE_URL')
-  board_id = os.getenv('TRELLO_BOARD_ID')
-  token = os.getenv('TRELLO_API_TOKEN')
-  key = os.getenv('TRELLO_API_KEY')
+  def __init__(self, base_url, board_id, token, key):
+    self.base_url = base_url
+    self.board_id = board_id
+    self.token = token
+    self.key = key
+    
 
-  @classmethod
-  def get_cards(cls):
-    url = f"{cls.base_url}/1/boards/{cls.board_id}/lists"
+  def get_cards(self):
+    url = f"{self.base_url}/1/boards/{self.board_id}/lists"
 
     params = {
-        "key": cls.key,
-        "token": cls.token,
+        "key": self.key,
+        "token": self.token,
         "cards": "open",
         "card_fields": "id,idList,name"
       }
@@ -24,16 +25,15 @@ class TrelloApi:
       return response.json()
     except Exception as e:
       print(f"An error occurred: {e}")
-      return None
+      return []
     
 
-  @classmethod
-  def add_card(cls, title):
-    url = f"{cls.base_url}/1/cards"
+  def add_card(self, title):
+    url = f"{self.base_url}/1/cards"
 
     data = {
-      "key": cls.key,
-      "token": cls.token,
+      "key": self.key,
+      "token": self.token,
       "name": title,
       "idList": os.getenv('TO_DO_LIST_ID')
     }
@@ -43,16 +43,15 @@ class TrelloApi:
       return response.json()
     except Exception as e:
       print(f"An error occurred: {e}")
-      return None
+      raise
     
 
-  @classmethod
-  def update_card(cls, card_id, list_id):
-    url = f"{cls.base_url}/1/cards/{card_id}"
+  def update_card(self, card_id, list_id):
+    url = f"{self.base_url}/1/cards/{card_id}"
 
     params = {
-      "key": cls.key,
-      "token": cls.token,
+      "key": self.key,
+      "token": self.token,
       "idList": list_id
     }
     
@@ -61,16 +60,15 @@ class TrelloApi:
       return response.json()
     except Exception as e:
       print(f"An error occurred: {e}")
-      return None
+      raise
     
 
-  @classmethod
-  def delete_card(cls, card_id):
-    url = f"{cls.base_url}/1/cards/{card_id}"
+  def delete_card(self, card_id):
+    url = f"{self.base_url}/1/cards/{card_id}"
 
     params = {
-      "key": cls.key,
-      "token": cls.token,
+      "key": self.key,
+      "token": self.token,
     }
 
     try:    
@@ -78,5 +76,5 @@ class TrelloApi:
       return response.json()
     except Exception as e:
       print(f"An error occurred: {e}")
-      return None
+      raise
   
