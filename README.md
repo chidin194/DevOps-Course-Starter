@@ -64,3 +64,8 @@ Create a Trello account [here](https://trello.com/signup), and then create a ded
 
 There are four further environment variables (TRELLO_BOARD_ID, TO_DO_LIST_ID, DOING_LIST_ID and DONE_LIST_ID) required by the app that you will need to obtain from the Trello API itself and add to the .env file. These will be different for each board, and information about how to obtain them can be found [here](https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/#your-first-api-call).
 
+## Running tests
+
+Tests can be run individually by setting up a pytest configuration. Select the flask icon on the left-hand vertical toolbar, and select `Configure Python Tests`. You'll then be prompted to select a test framework, `pytest` in our case, and then the location of the test suite, which is `todo_app` here. This set-up should mean that all tests in the test directory are now discoverable, and can be run either from the Testing window, or from the test files directly. 
+
+You can also run all tests by running `poetry run pytest` in a terminal whilst in the root repository.
