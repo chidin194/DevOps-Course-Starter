@@ -10,15 +10,40 @@
   <div class="row">
     <div class="col-md-12">
       <h2>Your To-Dos</h2>
-      <ul class="list-group mb-4" style="list-style: none;">
-        {% for to_do in to_dos -%}
-            <li>{{ to_do.status }}: {{ to_do.title }}</li>
-            <form action="/complete/{{to_do.id}}" method="post">
+      <ul class="list-group mb-4" id="to-do-list" style="list-style: none;">
+        {% for item in view_model.to_do_items -%}
+            <li>{{ item.status }}: {{ item.title }}</li>
+            <form action="/complete/{{item.id}}" method="post">
               <div>
                 <input type="submit" value="Mark as complete" />
               </div>
             </form>
-            <form action="/delete/{{to_do.id}}" method="post">
+            <form action="/delete/{{item.id}}" method="post">
+              <div>
+                <input type="submit" value="Delete" />
+              </div>
+            </form>
+        {% endfor %}
+      </ul>
+      <ul class="list-group mb-4" id="doing-list" style="list-style: none;">
+        {% for item in view_model.doing_items -%}
+            <li>{{ item.status }}: {{ item.title }}</li>
+            <form action="/complete/{{item.id}}" method="post">
+              <div>
+                <input type="submit" value="Mark as complete" />
+              </div>
+            </form>
+            <form action="/delete/{{item.id}}" method="post">
+              <div>
+                <input type="submit" value="Delete" />
+              </div>
+            </form>
+        {% endfor %}
+      </ul>
+      <ul class="list-group mb-4" id="done-list" style="list-style: none;">
+        {% for item in view_model.done_items -%}
+            <li>{{ item.status }}: {{ item.title }}</li>
+            <form action="/delete/{{item.id}}" method="post">
               <div>
                 <input type="submit" value="Delete" />
               </div>
