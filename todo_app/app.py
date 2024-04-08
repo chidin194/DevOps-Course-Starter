@@ -11,9 +11,7 @@ def create_app():
     @app.route('/')
     def index():
         items = trello_items.get_items()
-        sort_order = {status:i for i,status in enumerate(['To Do', 'Doing', 'Done'])}
-        to_dos = sorted(items, key=lambda x: sort_order.get(x.status, len(sort_order)))
-        view_model = ViewModel(to_dos)
+        view_model = ViewModel(items)
         
         return render_template("index.html", view_model=view_model)
 

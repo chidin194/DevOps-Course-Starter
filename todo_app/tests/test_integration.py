@@ -45,7 +45,7 @@ def stub_get_lists(url, params={}):
         fake_response_data = [{
             'id': '123abc',
             'name': 'To Do',
-            'cards': [{'id': '456', 'name': 'Test card'}]
+            'cards': [{'id': '456', 'name': 'Test card', 'idList': '123abc'},]
         }]
         return StubResponse(fake_response_data)
 
