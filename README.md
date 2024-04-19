@@ -69,3 +69,11 @@ There are four further environment variables (TRELLO_BOARD_ID, TO_DO_LIST_ID, DO
 Tests can be run individually by setting up a pytest configuration. Select the flask icon on the left-hand vertical toolbar, and select `Configure Python Tests`. You'll then be prompted to select a test framework, `pytest` in our case, and then the location of the test suite, which is `todo_app` here. This set-up should mean that all tests in the test directory are now discoverable, and can be run either from the Testing window, or from the test files directly. 
 
 You can also run all tests by running `poetry run pytest` in a terminal whilst in the root repository.
+
+## Provisioning VMs for application deployment using Ansible
+
+You will be given details for a control node as well as several hosts. First, ensure that you can connect to the control node via SSH. Then, ensure that the files contained within this project's 'ansible' file are copied over to the control node's /home/ec2-user/ directory. Ensure that the inventory.ini file is updated with the IP addresses of all managed nodes. From here, run the following command:
+```
+ansible-playbook playbook.yaml -i inventory.ini
+```
+To check that all plays have been applied, you can then connect via SSH to each managed node (after first connecting to the control node) and explore the contents of directories there.
