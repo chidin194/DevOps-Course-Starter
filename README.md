@@ -77,3 +77,18 @@ You will be given details for a control node as well as several hosts. First, en
 ansible-playbook playbook.yaml -i inventory.ini
 ```
 To check that all plays have been applied, you can then connect via SSH to each managed node (after first connecting to the control node) and explore the contents of directories there.
+
+## Running the project with Docker
+
+Build the Docker image by running the following command:
+```bash
+docker build --target development --tag todo-app:development .
+```
+
+To enable hot reloading, you should use the following command to run the Docker container using a bind mount:
+```bash
+$ docker run --env-file .env -p 8000:5000 --mount "type=bind,source=$(pwd)/todo_app,target=/app/todo_app" todo-app:development
+```
+
+To build and run the production container, you should replace all instances of 'development' with 'production' in both of the above commands.
+
