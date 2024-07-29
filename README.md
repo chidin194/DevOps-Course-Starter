@@ -92,3 +92,6 @@ $ docker run --env-file .env -p 8000:5000 --mount "type=bind,source=$(pwd)/todo_
 
 To build and run the production container, you should replace all instances of 'development' with 'production' in both of the above commands.
 
+## Architecture Diagrams
+
+Exported architecture diagrams for the project can be found in the diagrams subfolder. If this needs to be edited, the original diagram can be found at [this link](https://lucid.app/lucidspark/445cb0d7-f8b5-4aa5-aeae-f68559699c22/edit?invitationId=inv_7f4bbb0b-5cac-4876-aac0-1753fb1d2934&page=0_0#).
