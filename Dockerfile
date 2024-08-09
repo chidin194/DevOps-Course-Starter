@@ -1,4 +1,4 @@
-FROM python:3.11 as base
+FROM python:3.11 AS base
 RUN curl -sSL https://install.python-poetry.org | python3 -
 ENV PATH=$PATH:/root/.local/bin/
 WORKDIR /app
@@ -8,11 +8,13 @@ COPY . /app
 EXPOSE 5000
 
 
-FROM base as production
+FROM base AS production
 ENV FLASK_DEBUG=false
 ENTRYPOINT poetry run flask run --host=0.0.0.0
 
-FROM base as development
+FROM base AS development
 ENV FLASK_DEBUG=true
 ENTRYPOINT poetry run flask run --host=0.0.0.0
 
+FROM base AS test
+ENTRYPOINT poetry run pytest 

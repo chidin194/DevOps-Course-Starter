@@ -94,4 +94,12 @@ To build and run the production container, you should replace all instances of '
 
 ## Architecture Diagrams
 
-Exported architecture diagrams for the project can be found in the diagrams subfolder. If this needs to be edited, the original diagram can be found at [this link](https://lucid.app/lucidspark/445cb0d7-f8b5-4aa5-aeae-f68559699c22/edit?invitationId=inv_7f4bbb0b-5cac-4876-aac0-1753fb1d2934&page=0_0#).
+Exported architecture diagrams for the project can be found in the diagrams subfolder. If this needs to be edited, the original diagram can be found at [this link](https://lucid.app/lucidspark/445cb0d7-f8b5-4aa5-aeae-f68559699c22/edit?invitationId=inv_7f4bbb0b-5cac-4876-aac0-1753fb1d2934&page=0_0#). Note that you need to request edit permissions.
+
+## Running tests in Docker
+
+Run tests in Docker using the following commands:
+```bash
+docker build --target test --tag todo-app:test .
+docker run todo-app:test
+```
