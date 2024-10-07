@@ -22,7 +22,7 @@ def test_index_page(monkeypatch, client):
 
     response = client.get('/')
     
-    assert response.status_code == 14035
+    assert response.status_code == 200
     assert 'Test card' in response.data.decode()
 
 
