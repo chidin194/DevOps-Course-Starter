@@ -32,4 +32,4 @@ jobs:
         password: ${{ secrets.DOCKER_HUB_PASSWORD }}
     - run: docker build --target production --tag chiaradinansoftwire/my-todo-app:latest .
     - run: docker push chiaradinansoftwire/my-todo-app:latest
-    - run: - run: curl -dH -X POST '${{ secrets.APP_SERVICE_DEPLOYMENT_WEBHOOK }}'
+    - run: curl -dH -X POST '${{ secrets.APP_SERVICE_DEPLOYMENT_WEBHOOK }}'
