@@ -104,20 +104,8 @@ docker build --target test --tag todo-app:test .
 docker run todo-app:test
 ```
 
-## Manual deployment process
+## Deployment process
 
-The image to be deployed through Azure can be found on Docker Hub at [this link](https://hub.docker.com/repository/docker/chiaradinansoftwire/my-todo-app/general). The website can be found at [https://chidin-todo-app.azurewebsites.net/](https://chidin-todo-app.azurewebsites.net/).
-
-Updating the website first requires an updated container image to built and pushed to Docker Hub, after logging in, using the following commands:
-
-```
-docker login
-
-docker build --target production --tag chiaradinansoftwire/my-todo-app:prod .
-
-docker push chiaradinansoftwire/my-todo-app:prod
-```
-
-Finally, you'll need to make a POST request to the webhook link found in the App Service by going to Deployment -> Deployment Center. This can be done using Git Bash, e.g. `curl -v -X POST '<webhook link>'`. Note that the link must be encased in single quotes to avoid misinterpretation of certain characters.
+The Docker image will be automatically rebuilt and redeployed when changes are pushed to main. If the deployment process needs to be amended at any point, please make changes to the 'build' and 'deploy' jobs in ci-pipeline.yml.
 
 
