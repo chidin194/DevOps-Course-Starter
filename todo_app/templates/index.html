@@ -13,6 +13,11 @@
       <ul class="list-group mb-4" id="to-do-list" style="list-style: none;">
         {% for item in view_model.to_do_items -%}
             <li>{{ item.status }}: {{ item.title }}</li>
+            <form action="/start/{{item.id}}" method="post">
+              <div>
+                <input type="submit" value="Start item" />
+              </div>
+            </form>
             <form action="/complete/{{item.id}}" method="post">
               <div>
                 <input type="submit" value="Mark as complete" />
