@@ -46,7 +46,7 @@ def start_item(item_id: str):
 
 
 def complete_item(item_id: str):
-    collection = get_collection
+    collection = get_collection()
 
     collection.update_one({"_id": ObjectId(item_id)}, {"$set": {"status": "Done"}})
 
