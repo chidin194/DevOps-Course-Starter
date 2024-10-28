@@ -6,5 +6,5 @@ class Item:
 
 
     @classmethod
-    def from_trello_card(cls, card_id, card_name, list):
-        return cls(card_id, card_name, list)
+    def from_mongo_document(cls, document):
+        return cls(document['_id'], document['status'], document['title'])
