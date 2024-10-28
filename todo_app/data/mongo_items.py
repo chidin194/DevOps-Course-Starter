@@ -4,16 +4,23 @@ import pymongo
 
 from todo_app.item import Item
 
+_collection = None
+
 def get_collection():
-
+  global _collection
+  
+  if _collection is not None:
+      return _collection
+  
   client = pymongo.MongoClient(os.getenv("MONGODB_CONNECTION_STRING"))
-
+  
   db = client[os.getenv("MONGODB_DB_NAME")]
-
+  
   collection = db[os.getenv("MONGODB_COLLECTION_NAME")]
-
+  
+  _collection = collection
+  
   return collection
-
 
 def get_items():
     collection = get_collection()
