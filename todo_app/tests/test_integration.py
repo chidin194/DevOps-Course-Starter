@@ -4,8 +4,6 @@ import pytest
 import mongomock
 import pymongo
 from todo_app import app
-from todo_app.tests.StubResponse import StubResponse
-from unittest.mock import MagicMock
 
 @pytest.fixture
 def client():
