@@ -60,7 +60,9 @@ Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser
 
 ## Setting up the MongoDB database
 
-You will need to set up a MongoDB cluster, database and collection and populate the various .env files with suitable values for the connection string, database name and collection name. This can be done through the Azure portal. You should also ensure that these values are set as environment variables in your pipeline. 
+You will need to set up a MongoDB cluster, database and collection and populate the various .env files with suitable values for the connection string, database name and collection name. This can be done through the Azure portal. You should also ensure that these values are set as environment variables in your pipeline.
+
+Azure Cosmos DB provides encryption at rest of data stored in various kinds of databases, including MongoDB, which is enabled by default in all regions. Data is periodically read from the secure storage within your account and backed up to the Azure Encrypted Blob Store. There is the option to add a second layer of encryption using customer-managed keys.
 
 ## Running tests
 
@@ -106,4 +108,6 @@ docker run todo-app:test
 
 The Docker image will be automatically rebuilt and redeployed when changes are pushed to main. If the deployment process needs to be amended at any point, please make changes to the 'build' and 'deploy' jobs in ci-pipeline.yml.
 
+# OAuth Authentication
 
+We use Flask Login to authenticate users. Any new app routes will require user validation via the login_required flask login decorator. If you need to set up a new environment, you will also need to create a new OAuth app in GitLab with an appropriate callback URL, and add the client secret and client ID to the environment variables.
