@@ -108,4 +108,6 @@ docker run todo-app:test
 
 The Docker image will be automatically rebuilt and redeployed when changes are pushed to main. If the deployment process needs to be amended at any point, please make changes to the 'build' and 'deploy' jobs in ci-pipeline.yml.
 
+# OAuth Authentication
 
+We use Flask Login to authenticate users. Any new app routes will require user validation via the login_required flask login decorator. If you need to set up a new environment, you will also need to create a new OAuth app in GitLab with an appropriate callback URL, and add the client secret and client ID to the environment variables.

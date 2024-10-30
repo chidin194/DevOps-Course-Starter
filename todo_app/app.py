@@ -20,7 +20,7 @@ def create_app():
     @login_manager.unauthorized_handler
     def unauthenticated():
         params = {
-            'client_id': os.getenv('FLASK_LOGIN_CLIENT_ID')
+            'client_id': os.getenv('OAUTH_CLIENT_ID')
         }
 
         encoded_params = urlencode(params)
@@ -95,8 +95,8 @@ def create_app():
         }
 
         params = {
-            'client_id': os.getenv('FLASK_LOGIN_CLIENT_ID'),
-            'client_secret': os.getenv('FLASK_LOGIN_CLIENT_SECRET'),
+            'client_id': os.getenv('OAUTH_CLIENT_ID'),
+            'client_secret': os.getenv('OAUTH_CLIENT_SECRET'),
             'code': code
         }
 
