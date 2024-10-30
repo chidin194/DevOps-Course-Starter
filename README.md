@@ -60,7 +60,9 @@ Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser
 
 ## Setting up the MongoDB database
 
-You will need to set up a MongoDB cluster, database and collection and populate the various .env files with suitable values for the connection string, database name and collection name. This can be done through the Azure portal. You should also ensure that these values are set as environment variables in your pipeline. 
+You will need to set up a MongoDB cluster, database and collection and populate the various .env files with suitable values for the connection string, database name and collection name. This can be done through the Azure portal. You should also ensure that these values are set as environment variables in your pipeline.
+
+Azure Cosmos DB provides encryption at rest of data stored in various kinds of databases, including MongoDB, which is enabled by default in all regions. Data is periodically read from the secure storage within your account and backed up to the Azure Encrypted Blob Store. There is the option to add a second layer of encryption using customer-managed keys.
 
 ## Running tests
 
