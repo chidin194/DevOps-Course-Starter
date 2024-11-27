@@ -38,8 +38,8 @@ def create_app():
 
     @app.route('/login/callback')
     def callback():
-        access_token = __get_access_token()
-        user_id = __validate_user_id(access_token)
+        access_token = _get_access_token()
+        user_id = _validate_user_id(access_token)
 
         current_user = User(id=user_id)
 
@@ -86,7 +86,7 @@ def create_app():
         return redirect('/')
     
 
-    def __get_access_token():
+    def _get_access_token():
         code = request.args.get('code')
         request_base_url = 'https://github.com/login/oauth/access_token'
 
@@ -105,7 +105,7 @@ def create_app():
         return data.get("access_token")
     
 
-    def __validate_user_id(access_token):
+    def _validate_user_id(access_token):
         base_url = 'https://api.github.com/user'
 
         headers = {
