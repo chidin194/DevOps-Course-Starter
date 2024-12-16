@@ -124,5 +124,4 @@ env/
 terraform.tfstate
 terraform.tfstate.backup
 terraform.tfvars
-outputs.tf
 .terraform.lock.hcl

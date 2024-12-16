@@ -52,8 +52,6 @@ resource "azurerm_linux_web_app" "main" {
     MONGODB_DB_NAME = "${var.prefix}-chidin-todo-cosmos-db"
     MONGODB_COLLECTION_NAME = "to_do"
     WEBSITES_PORT = "5000"
-    OAUTH_CLIENT_ID = "${var.OAUTH_CLIENT_ID}"
-    OAUTH_CLIENT_SECRET = "${var.OAUTH_CLIENT_SECRET}"
   }
 }
 
@@ -85,7 +83,7 @@ resource "azurerm_cosmosdb_account" "main" {
     failover_priority = 0
   }
 
-  # lifecycle {
-  #   prevent_destroy = true
-  # }
+  lifecycle {
+    prevent_destroy = true
+  }
 }
