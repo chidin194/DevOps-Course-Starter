@@ -32,4 +32,6 @@ jobs:
         password: ${{ secrets.DOCKER_HUB_PASSWORD }}
     - run: docker build --target production --tag chiaradinansoftwire/my-todo-app:latest .
     - run: docker push chiaradinansoftwire/my-todo-app:latest
-    - run: curl -dH --fail -X POST '${{ secrets.APP_SERVICE_DEPLOYMENT_WEBHOOK }}'
+    - run: terraform init
+    - run: terraform apply -auto-approve
+    - run: curl -dH --fail -X POST "$(terraform output -raw webhook_url)""
